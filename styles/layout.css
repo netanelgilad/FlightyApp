@@ -1,0 +1,43 @@
+/* Reset */
+html, body { height: 100%; margin: 0; padding: 0; }
+
+#wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.overlay-block {
+    position: absolute;
+    z-index: 9999;
+    background-color: rgba(255,250,34,0.5);
+}
+
+#header {
+    margin: 20px;
+    width: 800px;
+    height: 150px;
+    float: right;
+    top: 0;
+}
+
+#left-region {
+    margin: 20px;
+    width: 150px;
+    height: 600px;
+    left: 0;
+}
+
+#footer {
+    margin: 20px;
+    width: 800px;
+    height: 150px;
+    float: right;
+    bottom: 0;
+}
+

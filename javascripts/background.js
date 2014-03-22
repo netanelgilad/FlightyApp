@@ -1,5 +1,5 @@
 chrome.app.runtime.onLaunched.addListener(function() {
-  chrome.app.window.create('wrapper.html', {
+  chrome.app.window.create('main.html', {
     'bounds': {
       'width': 400,
       'height': 500
@@ -7,6 +7,6 @@ chrome.app.runtime.onLaunched.addListener(function() {
     frame : 'none'
   },
   function(win) {
-    win.fullscreen();
+    win.maximize();
   });
 });
