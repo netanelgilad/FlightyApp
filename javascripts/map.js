@@ -10,89 +10,90 @@ function onNeWMILoaded() {
         loadNeWMIModules(
             {
                 callback: onReady,
-                modules: ["GoogleEngine", "Object", "Layer"]
+                modules: ["Draw", "Geometry", "GoogleEngine", "Object", "Layer"]
             });
     }});
 }
 
-function onReady()
-{
-    dojo.declare("BoundariesLayer", NeWMI.Layer.Base.ACustomObjectsLayer,{
+var map;
+var image;
+function onReady() {
+    map = new NeWMI.Engine.Google.Map('mapContainer');
+    map.setPosition(34,31,7);
 
-        plane : new Image(),
-        imageloaded : false,
+    image = new Image();
 
-        // In dojo - Tell the object that we will call the base object constructor explicitly
-        "-chains-" :
-        {
-            constructor: "manual"
-        },
+    $(image).load(function() {
+        NeWMI.Draw.Template.TemplateParser.parse("http://localhost/NewmiTest/Template/template.php", onTemplateLoaded);
+    }).attr('src', "/resources/images/plane.png");
+}
 
-        constructor : function()
-        {
-            // Calling the base constructor with second parameter true, to support only Canvas 2D Context drawing
-            this.inherited(arguments, [false, true]);
-        },
+function onTemplateLoaded(p_objTemplates) {
+    var objLayer = new NeWMI.Layer.TemplateLayer(false);
 
-        drawObjects2D : function (p_objMap, p_objContext, p_arrObjToDraw)
-        {
-            p_arrObjToDraw.forEach(function(currObjects)
-            {
-                p_arrObjToDraw.forEach(function(currObjects)
-                {
-                    var makeSureImageIsLoaded = function(p_objContext, geometry, layer) {
-                        if (layer.imageloaded) {
-                            layer.drawImage(p_objContext, layer.plane, geometry);
-                        }
-                        else {
-                            $(layer.plane)
-                                .load(function() {
-                                    layer.imageloaded = true;
-                                    layer.drawImage(p_objContext, layer.plane, geometry);
-                                })
-                                .attr("src", '/resources/images/plane.png');
-                        }
-                    }
+    objLayer.name = "Objects";
+    objLayer.newmiProps.id = 1;
 
-                    makeSureImageIsLoaded(p_objContext, currObjects.geometry, this);
-                }, this);
-            }, this);
-        },
+    var color = 'rgba(51,0,255,1)';
+    var selectedColor = 'rgba(125,0,200,1)';
 
-        drawImage : function(p_objContext, image, geometry) {
-            NeWMI.Draw.Draw2D.imageCenter(p_objContext, image, geometry.xCenter, geometry.yCenter, 150,150);
-        }
+    var objStyle3 = new NeWMI.Draw.Styles.FontStyle({
+        font : '8pt arial',
+        fillStyle : color,
+        selectedFillStyle : selectedColor
     });
 
-	var map = new NeWMI.Engine.Google.Map('mapContainer');
-	map.setPosition(34,31,7);
+    var objImageStyle = new NeWMI.Draw.Styles.ImageStyle({ image: image, size: { width: 25, height: 25 } });
+    var arrImages = [];
+    arrImages[1] = objImageStyle;
+    var objImagesStyle = new NeWMI.Draw.Styles.ImagesFontStyle({images: arrImages});
 
-    $.getJSON('http://localhost:3000/planes', function(data) {
-        var first;
+    var arrDrawStyles = [objImagesStyle, objStyle3, objStyle3, objStyle3, objStyle3];
 
-        $.each(data, function(key, value) {
-            if (!first) {
-                first = value;
-            }
-        });
+    var arrObj = [];
 
-        var myFirstNeWMIObject = new NeWMI.Object.NeWMIObjectSelfDraw();
-        myFirstNeWMIObject.id = "MyObjectID";
-        console.log(first[1]);
-        console.log(first[2]);
-        var rect = new NeWMI.Geometry.Rectangle( { xCenter: first[2], yCenter: first[1], width: 0.5, height: 0.5} );
-        myFirstNeWMIObject.geometry = rect;
+    var arrDrawFlags = { 500 : [ true, true, true, true, true ],
+        2000 : [ true, true, false, false, false ],
+        "Whatever will be here that it's not a number will be fixed with the max scale" : [ true, false, false, false, false ]};
 
-        // getEnvelope will return a Rectangle geometry, getRect will return the its NeWMI.Draw.Types.Rect type
-        myFirstNeWMIObject.boundsRect = rect.getEnvelope().getRect();
+    arrDrawFlags[500].symbolSizeFactor = 1.5;
+    arrDrawFlags[2000].symbolSizeFactor = 1;
+    arrDrawFlags["Whatever will be here that it's not a number will be fixed with the max scale"].symbolSizeFactor = 0.5;
 
-        myFirstNeWMIObject.setFillAsImage('/resources/images/plane.png');
+    objLayer.setDrawData(p_objTemplates["Forces"], arrDrawStyles, arrDrawFlags);
+    objLayer.geoColor = color;
 
-        // Creating a simple layer which draws the object's geometry
-        var myLayer = new BoundariesLayer();
+    map.layersMgr.insertAppLayer(objLayer);
 
-        myLayer.dataSource.addObject(myFirstNeWMIObject);
+    setInterval(function() {
 
-        map.layersMgr.insertAppLayer(myLayer);
-    })
+        $.getJSON('http://localhost:3000/planes', function(data) {
+            console.log("got data.")
+            $.each(data, function(key, value) {
+
+
+                if (objLayer.dataSource.objects.containsKey(key))
+                {
+                    var obj = objLayer.dataSource.objects.item(key);
+
+                    obj.drawValues.push([1], value[0], value[4], value[8], value[9]);
+                    obj.geometry.x = value[2];
+                    obj.geometry.y = value[1];
+
+                    objLayer.dataSource.updateObject(obj);
+                }
+                else
+                {
+                    var obj = new NeWMI.Draw.Template.TemplateObject(value[2], value[1]);
+
+                    obj.drawValues.push([1], value[0], value[4], value[8], value[9]);
+                    obj.id = key;
+
+                    objLayer.dataSource.addObject(obj);
+                }
+            });
+        })
+
+        objLayer.refresh();
+    }, 3000);
 }
