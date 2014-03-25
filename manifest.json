@@ -1,0 +1,17 @@
+{
+  "name": "Flighty",
+  "description": "The flighty app.",
+  "version": "0.1",
+  "app": {
+    "background": {
+      "scripts": ["javascripts/background.js"]
+    }
+  },
+  "icons": { "16": "resources/images/calculator-16.png", "128": "resources/images/calculator-128.png" },
+  "sandbox": {
+     "pages": ["views/window.html"]
+  },
+    "permissions": [
+        "http://localhost/*"
+    ]
+}

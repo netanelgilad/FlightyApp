@@ -1,0 +1,124 @@
+/*************************************************
+	Override Claro DataGrid & Table
+**************************************************/
+.claro .dojoxGridRow .dojoxGridRowTable tr
+{
+	background: none;
+}
+
+.claro .dojoxGridRowSelected .dojoxGridRowTable tr
+{
+	background-color: #cee6fa;
+}
+
+.claro .dojoxGridRowOver .dojoxGridRowTable tr
+{
+	background: none;
+}
+
+.claro .dojoxGridRowSelected .dojoxGridRowTable tr
+{
+	cursor: move;
+}
+
+.claro .dojoxGridCellFocus
+{
+	border: 1px solid transparent !important;
+}
+.claro .dijitButton .dijitButtonNode
+{
+	padding: 0;
+}
+
+.claro .dojoxGrid .dojoxGridCell
+{
+	border-color: transparent;	
+}
+.dojoxGridHeader 
+{ 
+	display:none; 
+}
+
+/*************************************************
+	Creates new icon css class
+**************************************************/
+.NeWMIFilterIcon
+{
+	background-image: url("../Images/filter.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 16px;
+	height: 16px;
+	text-align: center;
+}
+
+.NeWMIBaseMapIcon
+{
+	background-repeat: no-repeat;
+	background-position: center;
+	padding: 0;
+	margin: 0;
+	width: 64px;
+	height: 64px;
+}
+
+/*************************************************
+	Override Claro ToggleButton
+**************************************************/
+.NeWMIButtonPadding
+{
+	padding: 0;
+	margin: 0;
+}
+.NeWMIButtonPaddingChecked
+{
+	padding: 0;
+	margin: 0;
+}
+
+/*************************************************
+	Override Chrome Selection
+**************************************************/
+*:focus  
+{  
+    outline: none;  
+}  
+
+/*************************************************
+	Override Claro Title Pane Inner Content
+**************************************************/
+.claro .dijitTitlePaneContentInner
+{
+	padding: 0px;
+}
+
+/*************************************************
+	Override ESRI Overview Map Control
+**************************************************/
+.ovwHighlight
+{
+	border: 1px solid #FFF !important;
+    background: rgba(0, 0, 0, .5) !important;
+    color: rgba(0, 0, 0, .5) !important;
+    opacity: 1 !important;
+}
+
+/*************************************************
+	Override Dojo Table Container for BaseMap
+**************************************************/
+.NewmiTableContainer-table
+{
+	height: 72px;
+}
+
+/*************************************************
+	Layer Manager Control Pane Class
+**************************************************/
+.NeWMILayerMgrPane {}
+
+/*************************************************
+	Layer Manager Control Grid Rows Class
+**************************************************/
+.NeWMILayerMgrGridVis {}
+.NeWMILayerMgrGridLayer {}
+.NeWMILayerMgrGridCmd {}

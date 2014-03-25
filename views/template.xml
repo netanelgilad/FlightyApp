@@ -1,0 +1,32 @@
+<Templates>
+	<Template>
+		<Name>Forces</Name>
+		<CCTemplateObjectPosProps>
+			<Name>Symbol</Name>
+		</CCTemplateObjectPosProps>
+        <CCTemplateObjectPosProps>
+           <Name>Rank</Name>
+           <VerticalAlignment>Far</VerticalAlignment>
+           <RelativeSizePosition>0,-0.5</RelativeSizePosition>
+           <RelatedToIndex>0</RelatedToIndex>
+        </CCTemplateObjectPosProps>
+        <CCTemplateObjectPosProps>
+           <Name>Capability</Name>
+           <HorizontalAlignment>Near</HorizontalAlignment>
+           <RelativeSizePosition>0.5,0</RelativeSizePosition>
+           <RelatedToIndex>0</RelatedToIndex>
+        </CCTemplateObjectPosProps>
+        <CCTemplateObjectPosProps>
+           <Name>Name</Name>
+           <VerticalAlignment>Near</VerticalAlignment>
+           <RelativeSizePosition>0,0.5</RelativeSizePosition>
+           <RelatedToIndex>0</RelatedToIndex>
+        </CCTemplateObjectPosProps>
+        <CCTemplateObjectPosProps>
+           <Name>Mobility</Name>
+           <HorizontalAlignment>Far</HorizontalAlignment>
+           <RelativeSizePosition>-0.5,0</RelativeSizePosition>
+           <RelatedToIndex>0</RelatedToIndex>
+        </CCTemplateObjectPosProps>
+	</Template>
+</Templates>

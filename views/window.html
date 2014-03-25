@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/javascripts/fixer.js"></script>
+    <!--<script src="/libs/RequireJS/require.js"></script>-->
+    <script src="https://www.google.com/jsapi"></script>
+
+    <script src="/javascripts/map.js"></script>
+    <script src="/libs/Newmi/NeWMI-1.0.0.js"></script>
+    <script src="/libs/JQuery/jquery.js"></script>
+    <title>Hello World!</title>
+    <style>
+        #mapContainer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            overflow: hidden;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+  </head>
+  <body ng-app="map">
+    <div map-host id="mapContainer"></div>
+  </body>
+</html>
