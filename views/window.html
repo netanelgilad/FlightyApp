@@ -4,7 +4,7 @@
     <script src="/javascripts/fixer.js"></script>
     <!--<script src="/libs/RequireJS/require.js"></script>-->
     <script src="https://www.google.com/jsapi"></script>
-
+      <link rel="stylesheet" href="/styles/layout.css">
     <script src="/javascripts/map.js"></script>
     <script src="/libs/Newmi/NeWMI-1.0.0.js"></script>
     <script src="/libs/JQuery/jquery.js"></script>
@@ -30,6 +30,102 @@
     </style>
   </head>
   <body ng-app="map">
+  <div class="overlay-block">
+      <div>
+        <h4>FPS: <span id="fps-data"></span></h4>
+        <h4>Plane Count: <span id="plane-count"></span></h4>
+      </div>
+      <div>
+          <h4><input type="checkbox" checked="checked" id="do-refresh"/>Refresh rate:</h4>
+          <br/>
+          <input id="refresh-rate" type="range" min="16" max="1000" value="50"/> <input  min="16" max="1000" type="number" value="50" id="refresh-rate-text"/>ms
+          <br/>
+          <h4><input type="checkbox" checked="checked" id="do-simulate"/>Data simulate rate:</h4>
+          <br/>
+          <input id="simulate-rate" type="range" min="16" max="1000" value="50"/> <input  min="16" max="1000" type="number" value="50" id="simulate-rate-text"/>ms
+          <br/>
+          <h4><input type="checkbox" checked="checked" id="do-real"/>Data rate:</h4>
+          <br/>
+          <input id="real-rate" type="range" step="1000" min="1000" max="10000" value="3000"/> <input  min="1000" step="1000" max="10000" type="number" value="3000" id="real-rate-text"/>ms
+      </div>
+
+      <script>
+          $("#refresh-rate").change(function() {
+             $("#refresh-rate-text").val(this.value);
+              if ($('#do-refresh').is(':checked')) {
+                  clearInterval(refreshTimer);
+                  refreshTimer = setInterval(refreshFunction, this.value);
+              }
+          });
+
+          $("#refresh-rate-text").change(function() {
+              $("#refresh-rate").val(this.value);
+              if ($('#do-refresh').is(':checked')) {
+                  clearInterval(refreshTimer);
+                  refreshTimer = setInterval(refreshFunction, this.value);
+              }
+          });
+
+          $("#simulate-rate").change(function() {
+              $("#simulate-rate-text").val(this.value);
+              if ($('#do-simulate').is(':checked')) {
+                clearInterval(simulateTimer);
+                simulateTimer = setInterval(simulateFunction, this.value);
+              }
+          });
+
+          $("#simulate-rate-text").change(function() {
+              $("#simulate-rate").val(this.value);
+              if ($('#do-simulate').is(':checked')) {
+                clearInterval(simulateTimer);
+                simulateTimer = setInterval(simulateFunction, this.value);
+              }
+          });
+
+          $("#real-rate").change(function() {
+              $("#real-rate-text").val(this.value);
+              if ($('#do-real').is(':checked')) {
+                  clearInterval(realTimer);
+                  realTimer = setInterval(realFunction, this.value);
+              }
+          });
+
+          $("#real-rate-text").change(function() {
+              $("#real-rate").val(this.value);
+              if ($('#do-real').is(':checked')) {
+                clearInterval(realTimer);
+                realTimer = setInterval(realFunction, this.value);
+              }
+          });
+
+          $("#do-refresh").change(function() {
+              if ($(this).is(':checked')) {
+                  refreshTimer = setInterval(refreshFunction, $("#refresh-rate").val());
+              }
+              else {
+                  clearInterval(refreshTimer);
+              }
+          });
+
+          $("#do-simulate").change(function() {
+              if ($(this).is(':checked')) {
+                  simulateTimer = setInterval(simulateFunction, $("#simulate-rate").val());
+              }
+              else {
+                  clearInterval(simulateTimer);
+              }
+          });
+
+          $("#do-real").change(function() {
+              if ($(this).is(':checked')) {
+                  realTimer = setInterval(realFunction, $("#real-rate").val());
+              }
+              else {
+                  clearInterval(realTimer);
+              }
+          });
+      </script>
+  </div>
     <div map-host id="mapContainer"></div>
   </body>
 </html>
