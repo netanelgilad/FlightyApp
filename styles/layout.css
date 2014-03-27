@@ -16,7 +16,7 @@ html, body { height: 100%; margin: 0; padding: 0; }
     position: absolute;
     z-index: 9999;
     background-color: rgba(56,250,34,0.8);
-    margin: 10px;
+    margin: 50px 10px;
 }
 
 #header {

@@ -23,6 +23,18 @@ var simulateTimer;
 var simulateFunction;
 var realTimer;
 var realFunction;
+var configObj = function() {
+    this.refresh = true;
+    this.refreshInterval = 50;
+    this.simulate = true;
+    this.simulateInterval = 50;
+    this.real = true;
+    this.realInterval = 3000;
+
+    this.planeCount = 0;
+};
+var config = new configObj();
+
 function onReady() {
     map = new NeWMI.Engine.ESRI.Map('mapContainer');
     var onlineMap = new esri.layers.ArcGISTiledMapServiceLayer("http://server.arcgisonline.com/ArcGIS/rest/services/ESRI_StreetMap_World_2D/MapServer");
@@ -73,10 +85,17 @@ function onTemplateLoaded(p_objTemplates) {
 
     map.layersMgr.insertAppLayer(objLayer);
 
-    realFunction = function() {
+    var datastats = new Stats();
+    datastats.setMode(1);
+    datastats.domElement.style.position = 'absolute';
+    datastats.domElement.style.top = '0px';
+    datastats.domElement.style.left = '200px';
+    datastats.domElement.style.zIndex = 100;
+    $("#mapContainer").append(datastats.domElement);
 
+    realFunction = function() {
         $.getJSON('http://localhost:3000/planes', function(data) {
-            var simulateRate = $('#simulate-rate').val();
+            datastats.begin();
             $.each(data, function(key, value) {
                 if (objLayer.dataSource.objects.containsKey(key))
                 {
@@ -88,7 +107,7 @@ function onTemplateLoaded(p_objTemplates) {
                     obj.geometry.angle = (angle / 180) * Math.PI;
                     obj.geometry.x = value[2];
                     obj.geometry.y = value[1];
-                    obj.data.mps = map.conversionsSvc.metersToGeo(obj.geometry.x, obj.geometry.y, (((value[5] * 1.852) * 1000) / 3600) / (1000 / simulateRate));
+                    //obj.data.mps = map.conversionsSvc.metersToGeo(obj.geometry.x, obj.geometry.y, (((value[5] * 1.852) * 1000) / 3600) / (1000 / config.simulateInterval));
 
                     objLayer.dataSource.updateObject(obj);
                 }
@@ -102,7 +121,7 @@ function onTemplateLoaded(p_objTemplates) {
                     if (angle < 0) angle += 360;
                     obj.geometry.angle = (angle / 180) * Math.PI;
                     obj.data = {};
-                    obj.data.mps = map.conversionsSvc.metersToGeo(obj.geometry.x, obj.geometry.y, (((value[5] * 1.852) * 1000) / 3600) / (1000 / simulateRate));
+                    //obj.data.mps = map.conversionsSvc.metersToGeo(obj.geometry.x, obj.geometry.y, (((value[5] * 1.852) * 1000) / 3600) / (1000 / config.simulateInterval));
 
                     objLayer.dataSource.addObject(obj);
                 }
@@ -114,38 +133,93 @@ function onTemplateLoaded(p_objTemplates) {
                 }
             });
 
-            $("#plane-count").text(objLayer.dataSource.objects.getKeyList().length);
+            config.planeCount = objLayer.dataSource.objects.getKeyList().length;
+
+            datastats.end();
         })
     };
 
-    realTimer = setInterval(realFunction, 3000);
+    realTimer = setInterval(realFunction, config.realInterval);
+
+    var simulatestats = new Stats();
+    simulatestats.setMode(1);
+    simulatestats.domElement.style.position = 'absolute';
+    simulatestats.domElement.style.top = '0px';
+    simulatestats.domElement.style.left = '100px';
+    simulatestats.domElement.style.zIndex = 100;
+    $("#mapContainer").append(simulatestats.domElement);
 
     simulateFunction = function() {
-        //var started = new Date();
+        simulatestats.begin();
         $.each(objLayer.dataSource.objects.getValueList(), function(key, value) {
             if (value.geometry.angle != 0 && value.data.mps != 0) {
-                value.geometry.x = value.geometry.x + (Math.cos(value.geometry.angle) * value.data.mps);
-                value.geometry.y = value.geometry.y + (Math.sin(value.geometry.angle) * value.data.mps);
-                //value.geometry.x += 0.001;
-                //value.geometry.y += 0.001;
+                //value.geometry.x = value.geometry.x + (Math.cos(value.geometry.angle) * value.data.mps);
+                //value.geometry.y = value.geometry.y + (Math.sin(value.geometry.angle) * value.data.mps);
+                value.geometry.x += 0.001;
+                value.geometry.y += 0.001;
                 objLayer.dataSource.updateObject(value);
             }
         });
-        //console.log('simulate time: ' + (new Date() - started));
+        simulatestats.end();
     };
-    simulateTimer = setInterval(simulateFunction, 50);
+    simulateTimer = setInterval(simulateFunction, config.simulateInterval);
 
-    var fps = 0;
-    var count = 0;
+    var fpsstats = new Stats();
+    fpsstats.domElement.style.position = 'absolute';
+    fpsstats.domElement.style.top = '0px';
+    fpsstats.domElement.style.zIndex = 100;
+    $("#mapContainer").append(fpsstats.domElement);
+
     refreshFunction = function() {
-        fps++;
         objLayer.refresh();
+        fpsstats.update();
     };
 
-    refreshTimer = setInterval(refreshFunction, 50);
+    refreshTimer = setInterval(refreshFunction, config.refreshInterval);
 
-    setInterval(function() {
-        $("#fps-data").text(fps);
-        fps = 0;
-    }, 1000);
+    var gui = new dat.GUI();
+    gui.add(config, 'planeCount').listen();
+    var configFolder = gui.addFolder('Parameters');
+    configFolder.add(config, 'refresh').onFinishChange(function (value) {
+        if (value) {
+            refreshTimer = setInterval(refreshFunction, value);
+        }
+        else {
+            clearInterval(refreshTimer);
+        }
+    });
+    configFolder.add(config, 'refreshInterval', 16, 1000).onFinishChange(function (value) {
+        if (config.refresh) {
+            clearInterval(refreshTimer);
+            refreshTimer = setInterval(refreshFunction, value);
+        }
+    });
+    configFolder.add(config, 'simulate').onFinishChange(function (value) {
+        if (value) {
+            simulateTimer = setInterval(simulateFunction, value);
+        }
+        else {
+            clearInterval(simulateTimer);
+        }
+    });
+    configFolder.add(config, 'simulateInterval', 16, 1000).onFinishChange(function (value) {
+        if (config.simulate) {
+            clearInterval(simulateTimer);
+            simulateTimer = setInterval(simulateFunction, value);
+        }
+    });
+    configFolder.add(config, 'real').onFinishChange(function (value) {
+        if (value) {
+            realTimer = setInterval(realFunction, value);
+        }
+        else {
+            clearInterval(realTimer);
+        }
+    });
+    configFolder.add(config, 'realInterval', 1000, 10000).onFinishChange(function (value) {
+        if (config.real) {
+            clearInterval(realTimer);
+            realTimer = setInterval(realFunction, value);
+        }
+    });
 }
