@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24e83098-47bd-4b54-a063-eed3b749e3d5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javascripts/dat.gui.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javascripts/stats.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles/layout.css" afterPath="$PROJECT_DIR$/styles/layout.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascripts/map.js" afterPath="$PROJECT_DIR$/javascripts/map.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/window.html" afterPath="$PROJECT_DIR$/views/window.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -78,16 +75,55 @@
       <file leaf-file-name="SimpleLineStyle.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libs/Newmi/Draw/Styles/Geometry/Lines/SimpleLineStyle.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="29" selection-start="579" selection-end="579" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2125">
+            <state line="21" column="29" selection-start="579" selection-end="579" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="2125">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="map.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="map.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/javascripts/map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="118" column="33" selection-start="4212" selection-end="4212" vertical-scroll-proportion="-0.2233883" vertical-offset="2155" max-vertical-offset="3910">
+            <state line="283" column="7" selection-start="10121" selection-end="10121" vertical-scroll-proportion="0.0" vertical-offset="4501" max-vertical-offset="5168">
+              <folding>
+                <marker date="1396106198145" expanded="true" signature="766:915" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="1262:1791" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="1730:1890" placeholder="{&quot;scalebarUnit&quot;: &quot;dual&quot;...}" />
+                <marker date="1396106198145" expanded="true" signature="1937:2129" placeholder="{&quot;visible&quot;: true...}" />
+                <marker date="1396106198145" expanded="true" signature="2093:2127" placeholder="{&quot;font&quot;: '8pt arial'...}" />
+                <marker date="1396106198145" expanded="true" signature="2459:2571" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="3488:5922" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="3554:5897" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="3580:5525" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="3584:4731" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="4807:5473" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="5630:5798" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="5599:5704" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="6401:7367" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="7118:7341" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="7111:7283" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="7672:7813" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="8117:8472" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="8128:8136" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="8215:8383" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="9636:9644" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="9664:9745" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="10077:10119" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="10034:10066" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="10298:10496" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="10365:10437" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="10443:10488" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="10590:10653" placeholder="{...}" />
+                <marker date="1396106198145" expanded="true" signature="10588:10652" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TemplateDraw.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/libs/Newmi/Draw/TemplateDraw.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="118" column="53" selection-start="5223" selection-end="5223" vertical-scroll-proportion="0.45945945" vertical-offset="1717" max-vertical-offset="6783">
               <folding />
             </state>
           </provider>
@@ -106,15 +142,6 @@
         <entry file="file://$PROJECT_DIR$/libs/Newmi/Draw/Styles/Geometry/Lines/ALineStyle.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2567">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="template.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/template.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="27" selection-start="609" selection-end="609" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="629">
               <folding />
             </state>
           </provider>
@@ -151,6 +178,7 @@
         <option value="$PROJECT_DIR$/javascripts/dat.gui.min.js" />
         <option value="$PROJECT_DIR$/views/window.html" />
         <option value="$PROJECT_DIR$/javascripts/map.js" />
+        <option value="$PROJECT_DIR$/libs/Newmi/Draw/TemplateDraw.js" />
       </list>
     </option>
   </component>
@@ -287,6 +315,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Newmi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FlightyApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FlightyApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Newmi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Draw" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FlightyApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FlightyApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="javascripts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -318,14 +386,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -336,15 +396,23 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="CHROME" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
@@ -396,7 +464,11 @@
       <created>1395878705813</created>
       <updated>1395878705813</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added ui stuff.&#10;">
+      <created>1395962477521</created>
+      <updated>1395962477521</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -407,7 +479,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32913843" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -415,12 +487,12 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32913843" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -439,17 +511,13 @@
     </option>
     <MESSAGE value="initial" />
     <MESSAGE value="initial&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial&#10;" />
+    <MESSAGE value="added ui stuff.&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="added ui stuff.&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/manifest.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="28" selection-start="311" selection-end="317" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="323" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/libs/JQuery/jquery.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="14" selection-start="1029" selection-end="1029" vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="154972" />
@@ -480,7 +548,37 @@
     <entry file="file://$PROJECT_DIR$/javascripts/map.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="38" selection-start="325" selection-end="325" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="867">
-          <folding />
+          <folding>
+            <marker date="1396106198145" expanded="true" signature="766:915" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="1262:1791" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="1730:1890" placeholder="{&quot;scalebarUnit&quot;: &quot;dual&quot;...}" />
+            <marker date="1396106198145" expanded="true" signature="1937:2129" placeholder="{&quot;visible&quot;: true...}" />
+            <marker date="1396106198145" expanded="true" signature="2093:2127" placeholder="{&quot;font&quot;: '8pt arial'...}" />
+            <marker date="1396106198145" expanded="true" signature="2459:2571" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="3488:5922" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="3554:5897" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="3580:5525" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="3584:4731" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="4807:5473" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="5630:5798" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="5599:5704" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="6401:7367" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="7118:7341" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="7111:7283" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="7672:7813" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="8117:8472" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="8128:8136" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="8215:8383" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="9636:9644" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="9664:9745" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="10077:10119" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="10034:10066" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="10298:10496" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="10365:10437" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="10443:10488" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="10590:10653" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="10588:10652" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -710,9 +808,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/javascripts/dat.gui.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="489" selection-start="49472" selection-end="49472" vertical-scroll-proportion="0.9678899" vertical-offset="744" max-vertical-offset="1479">
-          <folding />
-        </state>
+        <state line="81" column="489" selection-start="49472" selection-end="49472" vertical-scroll-proportion="0.9678899" vertical-offset="744" max-vertical-offset="1479" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/Newmi/Draw/Styles/Geometry/Lines/SimpleLineStyle.js">
@@ -724,14 +820,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/window.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="21" selection-start="998" selection-end="998" vertical-scroll-proportion="0.76131046" vertical-offset="73" max-vertical-offset="714">
+        <state line="23" column="36" selection-start="840" selection-end="840" vertical-scroll-proportion="0.31045243" vertical-offset="192" max-vertical-offset="833">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/javascripts/map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="33" selection-start="4212" selection-end="4212" vertical-scroll-proportion="-0.2233883" vertical-offset="2155" max-vertical-offset="3910">
+        <state line="283" column="7" selection-start="10121" selection-end="10121" vertical-scroll-proportion="0.0" vertical-offset="4501" max-vertical-offset="5168">
+          <folding>
+            <marker date="1396106198145" expanded="true" signature="766:915" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="1262:1791" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="1730:1890" placeholder="{&quot;scalebarUnit&quot;: &quot;dual&quot;...}" />
+            <marker date="1396106198145" expanded="true" signature="1937:2129" placeholder="{&quot;visible&quot;: true...}" />
+            <marker date="1396106198145" expanded="true" signature="2093:2127" placeholder="{&quot;font&quot;: '8pt arial'...}" />
+            <marker date="1396106198145" expanded="true" signature="2459:2571" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="3488:5922" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="3554:5897" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="3580:5525" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="3584:4731" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="4807:5473" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="5630:5798" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="5599:5704" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="6401:7367" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="7118:7341" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="7111:7283" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="7672:7813" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="8117:8472" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="8128:8136" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="8215:8383" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="9636:9644" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="9664:9745" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="10077:10119" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="10034:10066" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="10298:10496" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="10365:10437" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="10443:10488" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="10590:10653" placeholder="{...}" />
+            <marker date="1396106198145" expanded="true" signature="10588:10652" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/Newmi/Draw/TemplateDraw.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="118" column="53" selection-start="5223" selection-end="5223" vertical-scroll-proportion="0.45945945" vertical-offset="1717" max-vertical-offset="6783">
           <folding />
         </state>
       </provider>

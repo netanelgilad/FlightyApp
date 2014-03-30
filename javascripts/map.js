@@ -23,6 +23,8 @@ var simulateTimer;
 var simulateFunction;
 var realTimer;
 var realFunction;
+var plotTimer;
+var plotFunction;
 var configObj = function() {
     this.refresh = true;
     this.refreshInterval = 50;
@@ -32,14 +34,41 @@ var configObj = function() {
     this.realInterval = 3000;
 
     this.planeCount = 0;
+    this.plotCreationTime = 3000;
+    this.plotPerPlane = 1;
+    this.plotCount = 0;
 };
 var config = new configObj();
 
+var objLayer;
+var plotLayer;
+
 function onReady() {
     map = new NeWMI.Engine.ESRI.Map('mapContainer');
+
     var onlineMap = new esri.layers.ArcGISTiledMapServiceLayer("http://server.arcgisonline.com/ArcGIS/rest/services/ESRI_StreetMap_World_2D/MapServer");
     map.layersMgr.insertStaticLayer(onlineMap);
     map.setPosition(34,31,7);
+
+    require(["esri/dijit/Scalebar", "esri/dijit/OverviewMap", "dojo/domReady!"
+    ], function(Scalebar, OverviewMap) {
+        var scalebar = new Scalebar({
+            map: map.core,
+            // "dual" displays both miles and kilmometers
+            // "english" is the default, which displays miles
+            // use "metric" for kilometers
+            scalebarUnit: "dual"
+        });
+
+        var overviewMapDijit = new OverviewMap({
+            map: map.core,
+            visible: true,
+            attachTo: 'bottom-right',
+            width: 100,
+            height: 100
+        });
+        overviewMapDijit.startup();
+    });
 
     image = new Image();
 
@@ -49,7 +78,8 @@ function onReady() {
 }
 
 function onTemplateLoaded(p_objTemplates) {
-    var objLayer = new NeWMI.Layer.TemplateLayer(false);
+    addPlots();
+    objLayer = new NeWMI.Layer.TemplateLayer(false);
 
     objLayer.name = "Objects";
     objLayer.newmiProps.id = 1;
@@ -93,6 +123,7 @@ function onTemplateLoaded(p_objTemplates) {
     datastats.domElement.style.zIndex = 100;
     $("#mapContainer").append(datastats.domElement);
 
+    var plotIDCounter = 0;
     realFunction = function() {
         $.getJSON('http://localhost:3000/planes', function(data) {
             datastats.begin();
@@ -121,6 +152,7 @@ function onTemplateLoaded(p_objTemplates) {
                     if (angle < 0) angle += 360;
                     obj.geometry.angle = (angle / 180) * Math.PI;
                     obj.data = {};
+                    obj.data.plotids = [];
                     //obj.data.mps = map.conversionsSvc.metersToGeo(obj.geometry.x, obj.geometry.y, (((value[5] * 1.852) * 1000) / 3600) / (1000 / config.simulateInterval));
 
                     objLayer.dataSource.addObject(obj);
@@ -133,7 +165,7 @@ function onTemplateLoaded(p_objTemplates) {
                 }
             });
 
-            config.planeCount = objLayer.dataSource.objects.getKeyList().length;
+            config.planeCount = objLayer.dataSource.objects.count;
 
             datastats.end();
         })
@@ -172,6 +204,7 @@ function onTemplateLoaded(p_objTemplates) {
 
     refreshFunction = function() {
         objLayer.refresh();
+        plotLayer.refresh();
         fpsstats.update();
     };
 
@@ -179,6 +212,7 @@ function onTemplateLoaded(p_objTemplates) {
 
     var gui = new dat.GUI();
     gui.add(config, 'planeCount').listen();
+    gui.add(config, 'plotCount').listen();
     var configFolder = gui.addFolder('Parameters');
     configFolder.add(config, 'refresh').onFinishChange(function (value) {
         if (value) {
@@ -222,4 +256,44 @@ function onTemplateLoaded(p_objTemplates) {
             realTimer = setInterval(realFunction, value);
         }
     });
+    configFolder.add(config, 'plotPerPlane', 0, 50);
+    configFolder.add(config, 'plotCreationTime', 1000, 10000).onFinishChange(function (value) {
+        clearInterval(plotTimer);
+        plotTimer = setInterval(plotFunction, value);
+    });
+}
+
+function addPlots() {
+    plotLayer = new NeWMI.Layer.SimpleLayer();
+    var plotIDCounter = 0;
+    
+    plotFunction = function() {
+        $.each(objLayer.dataSource.objects.getValueList(), function(key, value) {
+              if (!value.data.plotids) {
+                  value.data.plotids = [];
+              }
+              
+              if (value.data.plotids.length >= config.plotPerPlane) {
+                 var removed = value.data.plotids.splice(0, value.data.plotids.length - config.plotPerPlane + 1);
+                 $.each(removed, function (key, value) {
+                     plotLayer.dataSource.removeObject(plotLayer.dataSource.objects.item(value));
+                 });
+              }
+              
+              var plot = new NeWMI.Object.NeWMIObject();
+              plot.id = ++plotIDCounter;
+              var plotPoint = new NeWMI.Geometry.Point({ x: value.geometry.x, y:value.geometry.y });
+              plot.geometry = plotPoint;
+              plot.boundsRect = plotPoint.getEnvelope().getRect();
+              plotLayer.dataSource.addObject(plot);
+              
+              value.data.plotids.push(plot.id);
+        });
+        
+        config.plotCount = plotLayer.dataSource.objects.count;
+    };
+    
+    plotTimer = setInterval(plotFunction, config.plotCreationTime);
+    
+    map.layersMgr.insertAppLayer(plotLayer);
 }
