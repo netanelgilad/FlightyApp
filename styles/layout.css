@@ -42,3 +42,9 @@ html, body { height: 100%; margin: 0; padding: 0; }
     bottom: 0;
 }
 
+#tool-bar {
+    width: 50px;
+    top: 50px;
+    right: 20px;
+}
+

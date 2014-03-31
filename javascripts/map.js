@@ -42,6 +42,7 @@ var config = new configObj();
 
 var objLayer;
 var plotLayer;
+var shapesLayer;
 
 function onReady() {
     map = new NeWMI.Engine.ESRI.Map('mapContainer');
@@ -78,7 +79,8 @@ function onReady() {
 }
 
 function onTemplateLoaded(p_objTemplates) {
-    addPlots();
+    CreateToolsBar();
+    //addPlots();
     objLayer = new NeWMI.Layer.TemplateLayer(false);
 
     objLayer.name = "Objects";
@@ -204,7 +206,7 @@ function onTemplateLoaded(p_objTemplates) {
 
     refreshFunction = function() {
         objLayer.refresh();
-        plotLayer.refresh();
+        //plotLayer.refresh();
         fpsstats.update();
     };
 
@@ -296,4 +298,32 @@ function addPlots() {
     plotTimer = setInterval(plotFunction, config.plotCreationTime);
     
     map.layersMgr.insertAppLayer(plotLayer);
+}
+
+function CreateToolsBar() {
+    var shapesID = 0;
+    shapesLayer = new NeWMI.Layer.SimpleLayer();
+    shapesLayer.newmiProps.id = 3;
+    map.layersMgr.insertAppLayer(shapesLayer);
+    
+    var panTool = NeWMI.Tool.PanTool(); 
+    map.toolsMgr.add(panTool);
+    
+    var objCreateTool = new NeWMI.Tool.CreateTool();
+    map.toolsMgr.add(objCreateTool);
+    
+    $('#create-button').click(function () {
+        map.toolsMgr.activate(objCreateTool);
+    
+        // Telling the tool to start creating a circle
+        objCreateTool.start(NeWMI.Geometry.Base.AGeometry.EGeometryType.Circle);    
+        
+        objCreateTool.on("creationFinished", function (evt) {
+            var obj = new NeWMI.Object.NeWMIObject();
+            obj.id = ++shapesID;
+            obj.geometry = evt.object;
+            obj.boundsRect = evt.object.getEnvelope().getRect();
+            shapesLayer.dataSource.addObject(obj);
+        });
+    });
 }
